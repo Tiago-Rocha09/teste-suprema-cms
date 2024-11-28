@@ -29,8 +29,7 @@ export const PageForm = ({ initialData }: { initialData?: any }) => {
     const sectionsData = data.section;
 
     const formattedArray: FormattedArrayItem[] = transformToArray(sectionsData);
-    console.log(formattedArray);
-    return;
+
     const payload = serialize(
       {
         name: data.name,
