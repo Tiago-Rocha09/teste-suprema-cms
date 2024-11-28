@@ -19,8 +19,8 @@ O projeto está online no link [teste-suprema-cms.vercel.app](https://teste-supr
 ### 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/Tiago-Rocha09/teste-suprema-site.git
-cd teste-suprema-site
+git clone https://github.com/Tiago-Rocha09/teste-suprema-cms.git
+cd teste-suprema-cms
 ```
 
 ### 2. Instale as dependências:
