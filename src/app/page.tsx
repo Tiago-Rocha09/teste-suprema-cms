@@ -10,15 +10,14 @@ export default async function Home() {
   const initialData: PageListProps[] = await pageService
     .listPages()
     .then((response) => {
-
       return response || [];
     });
 
   return (
-    <main className="flex flex-col gap-8 row-start-2 w-[calc(100%-17rem)] ml-auto pr-4 mt-4 pb-48">
+    <main className="flex flex-col gap-8 w-full lg:w-[calc(100%-17rem)] px-4 ml-auto pr-4 mt-4 pb-48">
       <ClientPageListProvider>
         <ContainerInputSearch />
-        <header className="flex justify-between items-center w-full">
+        <header className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full gap-4">
           <PageTitle title="Lista de páginas" />
           <Link
             href="/page/new"

@@ -64,7 +64,7 @@ export const PageForm = ({ initialData }: { initialData?: any }) => {
         onSubmit={methods.handleSubmit(onSubmit)}
       >
         <Card>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Input
               label="Nome da página"
               containerClass="col-span-1"
@@ -79,7 +79,7 @@ export const PageForm = ({ initialData }: { initialData?: any }) => {
             />
             <Input
               label="Descrição"
-              containerClass="col-span-2"
+              containerClass="col-span-1 md:col-span-2"
               control={control}
               name="description"
             />
@@ -91,7 +91,7 @@ export const PageForm = ({ initialData }: { initialData?: any }) => {
 
         <SectionsArea />
 
-        <div className="text-end my-7">
+        <div className="text-end my-7 flex flex-col md:flex-row justify-end gap-4">
           <button
             className="px-4 py-2 bg-gray-200 rounded-lg hover:bg-gray-300"
             onClick={() => router.push("/")}
@@ -101,7 +101,7 @@ export const PageForm = ({ initialData }: { initialData?: any }) => {
             Cancelar
           </button>
           <button
-            className="ml-4 px-4 py-2 bg-[#EFA144] text-black rounded-lg hover:bg-[#EFb014]"
+            className="px-4 py-2 bg-[#EFA144] text-black rounded-lg hover:bg-[#EFb014]"
             type="submit"
             disabled={loading}
           >

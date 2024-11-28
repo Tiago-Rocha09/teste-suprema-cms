@@ -22,7 +22,7 @@ export default async function Page({ params }: PageFormProps) {
     : null;
 
   return (
-    <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-[calc(100%-17rem)] ml-auto pr-4 mt-4">
+    <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start w-full lg:w-[calc(100%-17rem)] px-4 ml-auto pr-4 mt-4">
       <ClientPageProvider>
         <header className="w-full">
           <PageTitle title={pageTitle} />

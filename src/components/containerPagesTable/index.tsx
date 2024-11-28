@@ -27,7 +27,6 @@ export const ContainerPagesTable = ({
   };
 
   const handleConfirmRemove = () => {
-
     deletePage(Number(idToRemove));
     setIdToRemove(null);
   };
@@ -56,6 +55,14 @@ export const ContainerPagesTable = ({
       render: (row: { id: number; name: string; slug: string }) => (
         <Dropdown
           options={[
+            {
+              key: "see",
+              text: "Ver página no site",
+              onClick: () => {
+                const url = `${process.env.NEXT_PUBLIC_SITE_URL}/${row.slug}`;
+                window.open(url, "_blank");
+              },
+            },
             {
               key: "edit",
               text: "Editar",
