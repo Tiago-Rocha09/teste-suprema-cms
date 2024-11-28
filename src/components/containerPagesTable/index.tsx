@@ -4,20 +4,15 @@ import { Card } from "../card";
 import { Chip } from "../chip";
 import { Dropdown } from "../dropdown";
 import { Table } from "../table";
-import { PageListProps } from "@/types/component";
 import { useRouter } from "next/navigation";
 import { ModalConfirmRemove } from "../modalConfirmRemove";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export const ContainerPagesTable = ({
-  initialData,
-}: {
-  initialData: PageListProps[];
-}) => {
+export const ContainerPagesTable = () => {
   const router = useRouter();
   const [idToRemove, setIdToRemove] = useState<number | null>(null);
 
-  const { pages, loading, deletePage } = usePageList(initialData);
+  const { pages, loading, deletePage, listPages } = usePageList();
   const handleOpenRemoveModal = (pageId: number) => {
     setIdToRemove(pageId);
   };
@@ -82,6 +77,10 @@ export const ContainerPagesTable = ({
       ),
     },
   ];
+
+  useEffect(() => {
+    listPages();
+  }, []);
 
   return (
     <Card>
