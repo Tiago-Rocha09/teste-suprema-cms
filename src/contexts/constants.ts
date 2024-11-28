@@ -48,7 +48,7 @@ export const defaultComponentValues: { [key in ComponentType]: Component } = {
         id: generateRandomString(),
         component: {
           id: generateRandomString(),
-          type: ComponentType.Text,
+          type: ComponentType.RichText,
           children: null,
         },
       },

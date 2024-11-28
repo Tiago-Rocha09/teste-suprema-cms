@@ -1,9 +1,9 @@
 import { GenericComponentProps } from "@/types/component";
 import { ComponentHeader } from "../componentHeader";
 import { ComponentImageUpload } from "../componentImageUpload";
-import { ComponentText } from "../componentText";
 import { usePage } from "@/contexts/components";
 import { useFormContext } from "react-hook-form";
+import { ComponentRichText } from "../componentRichText";
 
 export const ComponentBanner = ({
   title,
@@ -26,7 +26,7 @@ export const ComponentBanner = ({
   );
 
   const componentText = componentChildren?.find(
-    (component) => component.component?.type === "text"
+    (component) => component.component?.type === "richText"
   );
 
   return (
@@ -43,7 +43,7 @@ export const ComponentBanner = ({
         componentId={componentImage?.id || ""}
         isBannerChildren={true}
       />
-      <ComponentText
+      <ComponentRichText
         sectionId={sectionId}
         title="Texto do banner"
         componentId={componentText?.id || ""}
