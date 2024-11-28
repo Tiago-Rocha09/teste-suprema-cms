@@ -11,14 +11,12 @@ type PageFormProps = {
 };
 
 export default async function Page({ params }: PageFormProps) {
-
   const pageParams = await params;
   const isEdit = pageParams.pageId !== "new";
   const pageTitle = !isEdit ? "Nova página" : "Editar página";
 
   const initialData: PageSchema = isEdit
     ? await pageService.findPage(Number(pageParams.pageId)).then((response) => {
-
         return response || null;
       })
     : null;
