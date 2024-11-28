@@ -38,6 +38,7 @@ Crie um arquivo `.env.local` na raiz do projeto e configure as variáveis de amb
 
 ```env
 NEXT_PUBLIC_API_URL=https://api-teste-suprema-2924b552fa2e.herokuapp.com
+NEXT_PUBLIC_SITE_URL=https://teste-suprema.vercel.app
 ```
 ### 4. Inicie o servidor de desenvolvimento:
 
