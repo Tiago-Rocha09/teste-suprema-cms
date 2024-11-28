@@ -5,9 +5,9 @@ import { ClientPageProvider } from "@/providers/page";
 import { pageService } from "@/services/pageSevice";
 
 type PageFormProps = {
-  params: {
-    pageId: number | string;
-  };
+  params: Promise<{
+    pageId: string;
+  }>;
 };
 
 export default async function Page({ params }: PageFormProps) {
