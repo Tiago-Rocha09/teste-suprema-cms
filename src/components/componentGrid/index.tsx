@@ -6,6 +6,7 @@ import { ComponentHeader } from "../componentHeader";
 import { GenericComponentProps } from "@/types/component";
 import { ComponentChildren } from "@/contexts/types";
 import { usePage } from "@/contexts/components";
+import { useFormContext } from "react-hook-form";
 
 export const ComponentGrid = ({
   sectionId,
@@ -14,6 +15,14 @@ export const ComponentGrid = ({
   const gridChildren = componentChildren as ComponentChildren[];
 
   const { removeSection } = usePage();
+  const { unregister } = useFormContext();
+
+  const handleRemoveSection = (id: string) => {
+    // Remove os campos da sessão no React Hook Form
+    unregister(`section.${id}`);
+    // Remove a sessão do estado do componente
+    removeSection(id);
+  };
 
   return (
     <div
@@ -22,7 +31,7 @@ export const ComponentGrid = ({
       <ComponentHeader
         title=""
         sectionId={sectionId}
-        handleRemove={() => removeSection(sectionId)}
+        handleRemove={() => handleRemoveSection(sectionId)}
       />
       {gridChildren.map((column) => {
         if (!column?.component) {

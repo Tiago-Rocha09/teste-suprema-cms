@@ -27,9 +27,16 @@ export const ComponentImageUpload = ({
   isGridChildren,
   isBannerChildren,
 }: GenericComponentProps) => {
-  const { setValue, watch } = useFormContext();
+  const { setValue, watch, unregister } = useFormContext();
   const { removeSection } = usePage();
 
+  const handleRemoveSection = (id: string) => {
+    // Remove os campos da sessão no React Hook Form
+    unregister(`section.${id}`);
+    // Remove a sessão do estado do componente
+    removeSection(id);
+  };
+  
   const watchImage = watch(
     getInputName(!!isGridChildren, !!isBannerChildren, componentId, sectionId)
   );
@@ -68,7 +75,7 @@ export const ComponentImageUpload = ({
         shouldHaveConfigOption={false}
         shouldHaveRemoveOption={!isGridChildren}
         title={title}
-        handleRemove={() => removeSection(sectionId)}
+        handleRemove={() => handleRemoveSection(sectionId)}
       />
       <div>
         <label className="cursor-pointer p-4 flex flex-col justify-center items-center min-h-52">

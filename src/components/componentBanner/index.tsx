@@ -3,6 +3,7 @@ import { ComponentHeader } from "../componentHeader";
 import { ComponentImageUpload } from "../componentImageUpload";
 import { ComponentText } from "../componentText";
 import { usePage } from "@/contexts/components";
+import { useFormContext } from "react-hook-form";
 
 export const ComponentBanner = ({
   title,
@@ -11,6 +12,14 @@ export const ComponentBanner = ({
   componentChildren,
 }: GenericComponentProps) => {
   const { removeSection } = usePage();
+  const { unregister } = useFormContext();
+
+  const handleRemoveSection = (id: string) => {
+    // Remove os campos da sessão no React Hook Form
+    unregister(`section.${id}`);
+    // Remove a sessão do estado do componente
+    removeSection(id);
+  };
 
   const componentImage = componentChildren?.find(
     (component) => component.component?.type === "image"
@@ -25,7 +34,7 @@ export const ComponentBanner = ({
       <ComponentHeader
         title={title}
         sectionId={sectionId}
-        handleRemove={() => removeSection(sectionId)}
+        handleRemove={() => handleRemoveSection(sectionId)}
         shouldHaveRemoveOption={!isGridChildren}
       />
       <ComponentImageUpload

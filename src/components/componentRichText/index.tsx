@@ -26,9 +26,16 @@ export const ComponentRichText = ({
   isGridChildren,
   isBannerChildren,
 }: GenericComponentProps) => {
-  const { control } = useFormContext();
+  const { control, unregister } = useFormContext();
 
   const { removeSection } = usePage();
+  
+  const handleRemoveSection = (id: string) => {
+    // Remove os campos da sessão no React Hook Form
+    unregister(`section.${id}`);
+    // Remove a sessão do estado do componente
+    removeSection(id);
+  };
 
   return (
     <div className="border-2 border-dashed p-4 relative pt-8">
@@ -36,7 +43,7 @@ export const ComponentRichText = ({
         sectionId={sectionId}
         title={title}
         shouldHaveRemoveOption={!isGridChildren}
-        handleRemove={() => removeSection(sectionId)}
+        handleRemove={() => handleRemoveSection(sectionId)}
       />
       <Controller
         name={getInputName(
